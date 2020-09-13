@@ -1,2 +1,3 @@
 # Leetcode
-Leetcode solutions
+Solutions to various leetcode problems \
+**Langauge:** Python
