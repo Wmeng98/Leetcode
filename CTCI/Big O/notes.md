@@ -39,7 +39,12 @@ number of elements in problem space are reduced by some proportion (halved, thir
 Tree depth vs. height
 - For each node in a tree, we can define two features: **height** and depth. A node's height is the number of edges to its most distant leaf node. On the other hand, a node's **depth** is the number of edges **back up to the root**
 
-**floor[log_2(N)]** where N is number of nodes in a binary tree is getting the height of that tree (height)
+**floor[log_2(N)]** where N is number of nodes in a binary tree is getting the height of that tree (height)\
+Now the ^ is asymptotic (limiting behavior), # nodes in a perfect binary tree is `2^(k+1)-1 = n (total # nodes)` where  k is the depth. therefore `k = log_2(n+1/2) -> O(logn)`
+
+
+> Note that each level has one more node that the entire above it
+
 
 consider f(n-1)+f(n-1)
 - with recursive functions making multiple calls, the runtime will often look like O(branches^depth) -> O(2^N).
@@ -62,9 +67,11 @@ rectangle area is `n(n+1)` and half that to get the sum of the arithmetic sequen
 
 Example 8
 - algorithm takes in array of strings, sort each string, then the full array
-- s length of longest string, n length of the array
+- s length of longest string, a length of the array
 - key: take into account string comparison takes O(s) time, not O(1) with integer comparison
-- `O(a*s(logn + logs))`
+- sort each string (a strings, at most s lenght) -> a*slogs
+- sort the array, ACCOUNT FOR str comparison take O(s) time, there are O(aloga) comparison!
+- `O(a*s(loga + logs))`
 
 Example 9
 - `2^depth = 2^(log_2(N)) = N (number of nodes)`
@@ -75,12 +82,12 @@ Example 10
 - `O(sqrt(N)) = O(N^(1/2))`
 
 Example 12
-- Permutations
+- Count all Permutations of a string
 - n! leaves and each leaf attached to path of n length
 - know no more than `n * n!` nodes
-- each node in call tree does O(n) work -> runtime `O(n^2 * n!)`
+- each node in call tree does O(n) work (recall working with strings here...) -> runtime `O(n^2 * n!)`
 
-> Note branching factor not constant in this viz
+> Note branching factor not constant in this viz. This is bc in permutation generation start with x characters in string, in first slot, have 7 choices, once picked, only have 6 choices for the next slot!
 
 Example 13
 

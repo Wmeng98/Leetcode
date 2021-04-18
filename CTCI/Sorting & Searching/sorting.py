@@ -16,7 +16,7 @@ Simplest, works by repeatedly swapping adjacent el if they are in wrong order
 Need one whole pass without swap to indicate done sorting
 
 NOTE: After 1 whole pass of the arr, the last el will be in proper place
-NOTE: After ith pass, last i el will be sorted in proper place
+NOTE: After ith pass, last i elements will be sorted in proper place
 
 [RUNTIME] O(n^2) worst case, O(n) best case (sorted already) 
 [SPACE] O(1) auxillary
@@ -241,7 +241,149 @@ print('quickSort', arr1)
 
 ################################################################################################################################################################
 
+'''
+MergeSort
+
+Like QuickSort, MergeSort is divide & conquer algorithm
+merge() function is used for merging 2 halves
+
+[RUNTIME] (n) = 2T(n/2) + θ(n) ---> O(nlogn) ---> worst, average, best ---> ALWAYS DIVIDES ARR INTO 2 HALVES
+[SPACE COMPLEXITY]
+	MergeSort is a recursive algorithm, therefore space complexity is O(logN) for both array & LL use cases
+	Will also create temp arrays in recursive calls, won't co-exist, O(n + logn (stack space)) ---> n (# el in array) dominates 
+	O(n)
+
+STABLE
+
+NOTE: MergeSort linkedlists in O(nlogn) time
+	merge operation can be impl without extra space.
+	Optimize [space complexity] to O(logn)
+
+NOTE: 3 Way MergeSort 
+	[RUNTIME] O(nlog_3(n)).. 
+	Although time complexity looks less compared to 2 way merge sort, the time taken actually may become higher because number of comparisons in merge function go higher.
+
+NOTE: MergeSort vs. QuickSort
+	Partition on el in array
+	Worst case complexity
+	datasets - quicksort worse with large dataset with many repeated els (creates n^2 QUADRATIC runtime)
+		Quicksort works faster in smaller datasets
+	stability
+	Locality of reference
+		quicksort - good cache locality?
+
+		quicksort changes the array inplace - in the array it is working on [unlike merge sort, for instance - which creates a different array for it]. 
+		Thus, it applies the principle of locality of reference.
+
+		Cache benefits from multiple accesses to the same place in the memory, since only the first access needs to be actually taken from the memory - 
+		the rest of the accesses are taken from cache, which is much faster the access to memory
+'''
+
+'''
+PseudoCode
+
+mergesort(arr, l, r)
+	// find mid point to divide array into 2 halves
+	mid = len(arr)//2
+	// call mergesort on first half
+	mergesort(arr, l, m)
+	// call mergesort on second half
+	mergesort(arr, m+1, l)
+	// merge the two halves together
+	merge(arr, l, m, r)
+
+'''
+# PASSING SUBARRAYS
+def mergesort_1(arr):
+	if len(arr) > 1:
+		# Find middle of array
+		mid = len(arr)//2
+		# divide arr into 2 subarrays
+		L = arr[:mid]
+		R = arr[mid:]
+		# run mergesort on each
+		mergesort_1(L)
+		mergesort_1(R)
+		# Finally merge the 2 sorted subarrays together
+		merge_1(arr, L, R)
+
+def merge_1(arr, L, R):
+	i = j = k = 0
+	while i < len(L) and j < len(R):
+		if L[i] < R[j]:
+			arr[k] = L[i]
+			i += 1
+		else:
+			arr[k] = R[i]
+			j += 1
+		k += 1
+	# check for remaining unmerged el and add them
+	while i < len(L):
+		arr[k] = L[i]
+		i += 1
+	while j < len(R):
+		arr[k] = R[j]
+		j += 1
+
+# PASSING INDICES
+def mergesort_2(arr, l_index, r_index):
+	# base case
+	if l_index >= r_index:
+		return
+	# get middle index (l + r)/2
+	mid_index = (l_index + r_index)//2
+	# run mergesort on subarrays
+	mergesort_2(arr, l_index, mid_index)
+	mergesort_2(arr, mid_index+1, r_index)
+	# merge sorted subarrays
+	merge_2(arr, l_index, r_index, mid_index)
+
+
+def merge_2(arr, l, h, m):
+	# make copies of subarrays we trying to merge
+	# TRICKY; second param non-inclusive, need +1
+	L = arr[l:m+1]
+	R = arr[m+1:h+1]
+
+	i = j = 0
+	k = l # not like v1 where arr is subarray, v2 arr is the whole array!!!
+	while i < len(L) and j < len(R):
+		if L[i] < R[j]:
+			arr[k] = L[i]
+			i += 1
+		else:
+			arr[k] = R[j]
+			j += 1	
+		k += 1
+	# add remaining unmerged el
+	while i < len(L):
+		arr[k] = L[i]
+		i += 1
+		k += 1
+	while j < len(R):
+		arr[k] = R[j]
+		j += 1
+		k += 1
+		
+# tests
+arr1 = [2,4,3,1,9]
+mergesort_1(arr1)
+print('mergesort_1', arr1)
+arr1 = [2,4,3,1,9]
+mergesort_2(arr1, 0, len(arr1)-1)
+print('mergesort_2', arr1)
+
 ################################################################################################################################################################
+
+'''
+BucketSort - Linked Lists
+'''
+
+################################################################################################################################################################
+
+'''
+HeapSort - Heaps
+'''
 
 ################################################################################################################################################################
 
@@ -249,10 +391,3 @@ print('quickSort', arr1)
 
 ################################################################################################################################################################
 
-################################################################################################################################################################
-
-################################################################################################################################################################
-
-################################################################################################################################################################
-
-################################################################################################################################################################

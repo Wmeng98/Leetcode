@@ -129,7 +129,7 @@ else :
 '''
 m - distance of the first node of the cycle from the head
 n - length of the cycle
-k - distance of node where slow and fast meet
+k - distance of node where slow and fast meet from first node in loop
 
 can conclude that distance travelled by fast ptr = 2*(distance travelled by the slow ptr)
 (m + xn + k) = 2*(m + yn + k)

@@ -37,3 +37,43 @@ Deque
         as deque provides an O(1) time complexity for append and pop operations as compared to list which provides O(n) time complexity.
 
 '''
+
+'''
+
+Python Mutable Data Types
+    Id - unique identifier for object -> points to location in memory
+    In python all data stored as object with 3 things: 
+        id, type, value
+    Mutable Objects (changeable)
+        list, dict, set
+    Immutable objects:
+        Integer, float, string, tuple, bool, frozenset
+    
+        STRINGS ARE NOT MUTABLE in PYTHON!!!
+
+    Passing arguments   
+        [MUTABLE] If a mutable object is called by reference in a function, the original variable may be changed. If you want to avoid changing the original variable, you need to copy it to another variable.
+        [IMMUTABLE] When immutable objects are called by reference in a function, its value cannot be changed.
+
+None
+    None is not the same as 0, False, or an empty string. None is a data type of its own (NoneType) and only None can be None
+
+
+Comparing 2 objects in Python
+    compare for EQUALITY or IDENTITY
+    
+    == for equality
+    is for identity
+    __eq__ to compare 2 class instances
+        Even if two class instances have the same attribute values, 
+        comparing them using == will return False
+
+        You have to tell python how exactly you want equality be defined. 
+        do so by defining a special method __eq__ like this
+
+        NOTE: because two different objects can sometimes compare equal 
+        (if not then don't bother overloading it). In this case the return id(self) 
+        hash function is BROKEN (EQUAL OBJECTS MUST HASH THE SAME)
+
+
+'''
