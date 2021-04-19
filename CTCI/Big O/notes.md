@@ -42,13 +42,22 @@ Tree depth vs. height
 **floor[log_2(N)]** where N is number of nodes in a binary tree is getting the height of that tree (height)\
 Now the ^ is asymptotic (limiting behavior), # nodes in a perfect binary tree is `2^(k+1)-1 = n (total # nodes)` where  k is the depth. therefore `k = log_2(n+1/2) -> O(logn)`
 
+> **Note: Easier to reason runtime logn as reducing original problem by a certain proportion**
 
-> Note that each level has one more node that the entire above it
+```
+Depth can be calculated in 2 ways.
+
+floor(log_2(N)) -> N is number of nodes in the binary tree
+ceil(log_2(n)) -> n is number of elements in array (leaf nodes/last level)
+```
+
+> Note: Number of el in array directly proportional to number of **leaf nodes (not # nodes on last level)** when creating a BST \
+> Note: that each level has one more node that the entire above it
 
 
 consider f(n-1)+f(n-1)
 - with recursive functions making multiple calls, the runtime will often look like O(branches^depth) -> O(2^N).
-- Note that runtime is asymptotic as the formula for the actual # nodes is actually `2^0 + 2^1 + .. + 2^N` which is `2^(N+1) - 1`
+- Note that runtime is asymptotic as the formula for the actual # nodes is bounded by `2^0 + 2^1 + .. + 2^N` which is `2^(N+1) - 1`
 - Note space complexity is `O(N)` as only O(N) nodes exist at any given time
 
 > Note base of a log doesn't matter since bases only differ by constant factor. However, this **doesn't apply to exponent bases**. 8^N -> (2^3)^N -> 2^3N -> 2^2N * 2^N and 2^N are differet by a factor of 2^2N **which is not a constant factor**.
@@ -99,6 +108,7 @@ Example 14
 - Print all fibonacci numbers
 - note NOT O(n2^n), n is changingg
 - fib(4) -> 2^4 steps
+- **Formula:** T(n) = T(n-1) + T(n-2)
 - `2^1 + 2^2 + ... + 2^n` -> 2^(n+1) - 1 -> `O(2^n)`
 
 Example 15

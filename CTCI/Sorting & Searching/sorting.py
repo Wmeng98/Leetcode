@@ -251,6 +251,7 @@ merge() function is used for merging 2 halves
 [SPACE COMPLEXITY]
 	MergeSort is a recursive algorithm, therefore space complexity is O(logN) for both array & LL use cases
 	Will also create temp arrays in recursive calls, won't co-exist, O(n + logn (stack space)) ---> n (# el in array) dominates 
+	
 	O(n)
 
 STABLE
@@ -376,8 +377,73 @@ print('mergesort_2', arr1)
 ################################################################################################################################################################
 
 '''
-BucketSort - Linked Lists
+BucketSort
+
+Sort el by first dividing several elements into groups called buckets
+El inside each bucket sorted using any suitable sorting algorithm
+
+bucketSort()
+  1. create N buckets each of which can hold a range of values
+  2. for all the buckets
+    initialize each bucket with 0 values
+  3. for all the buckets
+    put elements into buckets matching the range
+  4. for all the buckets 
+    sort elements in each bucket
+  5. gather elements from each bucket
+end bucketSort
+
+Getting optimal size of each bucket
+	(largest_element)\(length_of_list)
+
+
+[RUNTIME]
+	[WORST] O(n^2) -> all in one bucket
+
+	[BEST] O(n+k) -> don't know if k > n
+		uniform distributed, already sorted, 
+
+	[AVERAGE] O(n) if each bucket has O(1) items, insertion sort becomes O(1)
+
+[SPACE] O(n+k) -> n number of el in array to be sorted, k is the number of buckets ~ O(n) if k ~ n
+
 '''
+
+def bucketSort(list):
+	# find optimal size per bucket
+	size = max(list)/len(list)
+
+	# n empty buckets - n = len(list)
+	buckets = []
+	for i in range(len(list)):
+		buckets.append([])
+	
+	# move el into diff buckets based of range
+	for i in range(len(list)):
+		j = int(list[i]/size)
+		if j < len(list):
+			# optimize by using linked list
+			buckets[j].append(list[i])
+		else:
+			buckets[j-1].append(list[i]) # only happens when max
+	
+	#  sort el within each bucket using insertion sort
+	for j in range(len(buckets)):
+		insertionSort(buckets[j], len(buckets[j]))
+	
+	#  concat sorted buckets into one
+	# 1 + 2 + 3 + 4 + 5 + 6 + ... n => n^2 NO!
+	res = []
+	for j in range(len(buckets)):
+		# append is O(1) amortized
+		for k in range(len(buckets[j])):
+			res.append(buckets[j][k])
+	
+	return res
+
+array = [.42, .32, .33, .52, .37, .47, .51]
+print("bucket sort array")
+print(bucketSort(array))
 
 ################################################################################################################################################################
 
