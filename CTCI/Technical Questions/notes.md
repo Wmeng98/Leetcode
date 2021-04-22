@@ -47,10 +47,10 @@ Logical ways to approach technical q's
   Use classes and structs where appropriate (fill in details of class after)\
   Good variable names (can abbreviate on whiteboard)
 
-  7. **Test**\
-    a. conceptual\
-    b. hot spots (base case in recursion, null nodes, etc.), small test cases, special cases\
-    c. when find bug, **ensure your fix is the best one.**
+7. **Test**\
+  a. conceptual\
+  b. hot spots (base case in recursion, null nodes, etc.), small test cases, special cases\
+  c. when find bug, **ensure your fix is the best one.**
 
 ## Optimize & Solve Technique
 
@@ -66,7 +66,7 @@ Logical ways to approach technical q's
 
 **Unecessary Work**
 
-- `a^3 + b^3 = c^3 + d^3`
+- print all positive integer sol'ns to equation `a^3 + b^3 = c^3 + d^3` where a,b,c,d are between [1,1000]
 - remove unecessary nested for loops
 
 **Duplicated Work**

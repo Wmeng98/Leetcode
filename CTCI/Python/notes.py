@@ -76,4 +76,39 @@ Comparing 2 objects in Python
         hash function is BROKEN (EQUAL OBJECTS MUST HASH THE SAME)
 
 
+List Comprehension
+    - List comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list
+    
+    SYNTAX
+    - `newlist = [expression for item in iterable if condition == True]`
+    - NOTE: The return value is a new list, leaving the old list unchanged
+
+    - NOTE:
+        - The expression can also contain conditions, not like a filter, but as a way to manipulate the outcome
+        - `newlist = [x if x != "banana" else "orange" for x in fruits]`
+
+DefaultDict
+- Defaultdict is a container like dictionaries present in the module collections. Defaultdict is a sub-class of the dict class 
+  that returns a dictionary-like object. The functionality of both dictionaries and defualtdict are almost same except for the 
+  fact that defualtdict never raises a KeyError. It provides a default value for the key that does not exists.
+
+- from collections import defaultdict
+
+Complexity of "in"
+    - Here is the summary for in:
+
+    list - Average: O(n)
+    set/dict - Average: O(1), Worst: O(n)
+
+    The O(n) worst case for sets and dicts is very uncommon, but it can happen if __hash__ is implemented poorly. 
+    This only happens if everything in your set has the same hash value.
+
+
+operator.itemgetter
+    - dict.items() -> array of tuples
+
+    - Return a callable object that fetches item from its operand using the operand’s __getitem__() method. 
+        If multiple items are specified, returns a tuple of lookup values. For example
+
+
 '''

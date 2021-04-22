@@ -449,7 +449,87 @@ print(bucketSort(array))
 
 '''
 HeapSort - Heaps
+
+	Comparison based sorting technique based on Binary heap data structure
+	Complete binary tree can be easily represented as ann array
+
+	Algorithm
+		1. Build heap from input data
+		2. Remove root (largest or smallest)
+		3. Repeat step 2. while size heap > 1
+
+		NOTE: Heapify procedure can be applied to a node only if its children nodes are heapified. 
+			So the heapification must be performed in the bottom-up order.
+
+To build a max-heap from any tree, we can thus start heapifying each sub-tree from the bottom up and end up 
+with a max-heap after the function is applied to all the elements including the root element
+
+NOTE: After each heapify call, heap maintains complete binary tree property
+
+* remove root (swap with last, etc.)
+	heapify
+		REPEAT...
+
+siftUp vs. siftDown for heapify
+	building a heap with repeated calls of siftDown has a complexity of O(n) whereas building it with repeated calls of siftUp has a complexity of O(nlogn)
+	https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
+
+	siftDown
+		Time taken by each call decreases with the depth of the node because these nodes are closer to the leaves
+	siftUp
+		Number of swaps increases with the depth of the node because if you are at full depth, 
+		you may have to swap all the way to the root. 
+		As the number of nodes grows exponentially with the depth of the tree, using siftUp gives a more expensive algorithm
+
+[RUNTIME]
+	building max heap is O(n) and heapify is O(logn)
+	O(nlogn)
+[SPACE]
+	In-place
+	O(1)
+
+Typical implementation is NOT STABLE but can be made stable
+
 '''
+
+def heapify(arr, n, i):
+	# init largest as root
+	largest = i
+	left_child = (2*i)+1
+	right_child = (2*i)+2
+
+	# set largest to larger of the 2 children IF THEY EXIST
+	if left_child < n and arr[largest] < arr[left_child]:
+		largest = left_child
+	if right_child < n and arr[largest] < arr[right_child]:
+		largest = right_child
+	
+	# Swap root
+	if largest != i:
+		arr[i], arr[largest] = arr[largest], arr[i]
+		# continue heapify root
+		heapify(arr, n, i)
+
+
+def heapSort(arr):
+	n = len(arr)
+	# build max heap, heapify all INTERNAL NODES only
+	for i in range(n//2-1, -1, -1):
+		heapify(arr, n, i)
+
+	# extract el one by one, IN-PLACE!!!
+	for j in range(n-1, 0, -1):
+		arr[0], arr[j] = arr[j], arr[0]
+		heapify(arr, j, 0) # NOTE: extract largest to end of arr, reduce new size to sort by 1
+
+# Driver code
+arr = [12, 11, 13, 5, 6, 7]
+heapSort(arr)
+n = len(arr)
+print('heapsort', arr)
+
+
+
 
 ################################################################################################################################################################
 
