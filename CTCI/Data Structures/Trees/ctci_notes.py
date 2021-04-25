@@ -220,6 +220,24 @@ print('min node', my_heap.delete_min()) # removing min node i.e 5
 
 ###############################################################################
 
+'''
+TRIES (PREFIX TREES)
+
+Trie variant of n-ary tree in which characters are stored at each node
+Each path down tree may represent a word
+
+(*) null nodes used to indicate complete words
+
+A node in a trie can have anywhere from 1 through ALPHABET_SIZE + 1 children
+Or 0 through ALPHABET_SIZE if a boolean flag is used instead of a * node
+
+Store entire engish language for quick prefix lookups
+    trie can check if string is valid prefix in O(k) time
+    
+    NOTE: Hash table cannot tell us if a string is a prefix of any valid words
+
+'''
+
 ###############################################################################
 
 ###############################################################################
