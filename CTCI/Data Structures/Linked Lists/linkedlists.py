@@ -144,6 +144,30 @@ def cycleDetection(head):
             return True
     return False
 
+'''
+m - distance of the first node of the cycle from the head
+n - length of the cycle
+k - distance of node where slow and fast meet from first node in loop
+
+can conclude that distance travelled by fast ptr = 2*(distance travelled by the slow ptr)
+(m + xn + k) = 2*(m + yn + k)
+
+where...
+x - number of complete cyclic rounds made by the fast ptr
+y - number of complete cyclic rounds made by the slow ptr
+
+therefore...
+m + k = (x-2y)n
+
+m + k is a multiple of n
+
+Algorithm
+- find meeting point - meet
+- now start moving ptrs at same speed one starting at head and one at meet.
+- bc m + k is a multiple of n, after m steps, meet at beginning of the loop
+
+'''
+
 def cycleDetectionStartNode(head):
     slow = fast = head
     cycle = False
@@ -279,7 +303,7 @@ Single:
 Double
     Complexity: insert/delete at known position O(1)
     Usage: stacks, heaps, binary trees
-    index perf: if searching required and memory is not a limitation (2 ptr per node not 1 anymore)
+    index perf: if searching required and memory is not a limitation (2 ptr per node not 1)
 
 '''
 

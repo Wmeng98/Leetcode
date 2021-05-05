@@ -36,11 +36,12 @@ number of elements in problem space are reduced by some proportion (halved, thir
 
 ## Recursive Runtimes
 
-Tree depth vs. height
+Tree depth vs. height vs. levels
 - For each node in a tree, we can define two features: **height** and depth. A node's height is the number of edges to its most distant leaf node. On the other hand, a node's **depth** is the number of edges **back up to the root**
 
 **floor[log_2(N)]** where N is number of nodes in a binary tree is getting the height of that tree (height)\
-Now the ^ is asymptotic (limiting behavior), # nodes in a perfect binary tree is `2^(k+1)-1 = n (total # nodes)` where  k is the depth. therefore `k = log_2(n+1/2) -> O(logn)`
+Now the ^ is asymptotic (limiting behavior), # nodes in a perfect binary tree is `2^(k+1)-1 = n (total # nodes)` where  k is the depth. therefore `k = log_2(n+1/2) -> O(logn)`\
+Note: consider when subproblem becomes size 1
 
 > **Note: Easier to reason runtime logn as reducing original problem by a certain proportion**
 
@@ -57,7 +58,7 @@ ceil(log_2(n)) -> n is number of elements in array (leaf nodes/last level)
 
 consider f(n-1)+f(n-1)
 - with recursive functions making multiple calls, the runtime will often look like O(branches^depth) -> O(2^N).
-- Note that runtime is asymptotic as the formula for the actual # nodes is bounded by `2^0 + 2^1 + .. + 2^N` which is `2^(N+1) - 1`
+- Note that runtime is asymptotic as the formula for the actual # nodes of a BINARY TREE is bounded by `2^0 + 2^1 + .. + 2^N` which is `2^(N+1) - 1`
 - Note space complexity is `O(N)` as only O(N) nodes exist at any given time
 
 > Note base of a log doesn't matter since bases only differ by constant factor. However, this **doesn't apply to exponent bases**. 8^N -> (2^3)^N -> 2^3N -> 2^2N * 2^N and 2^N are differet by a factor of 2^2N **which is not a constant factor**.

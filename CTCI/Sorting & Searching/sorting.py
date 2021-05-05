@@ -393,7 +393,7 @@ bucketSort()
   5. gather elements from each bucket
 end bucketSort
 
-Getting optimal size of each bucket
+NOTE: Getting optimal size of each bucket
 	(largest_element)\(length_of_list)
 
 
@@ -479,8 +479,7 @@ siftUp vs. siftDown for heapify
 	siftUp
 		Number of swaps increases with the depth of the node because if you are at full depth, 
 		you may have to swap all the way to the root. 
-		As the number of nodes grows exponentially with the depth of the tree, using siftUp gives a more expensive algorithm
-
+		NOTE: As the number of nodes grows exponentially with the depth of the tree, using siftUp gives a more expensive algorithm;
 [RUNTIME]
 	building max heap is O(n) and heapify is O(logn)
 	O(nlogn)
@@ -508,6 +507,7 @@ def heapify(arr, n, i):
 	if largest != i:
 		arr[i], arr[largest] = arr[largest], arr[i]
 		# continue heapify root
+		i = largest
 		heapify(arr, n, i)
 
 

@@ -383,4 +383,6 @@ Further optimization
         Actually (n-1) + (n-2) + (n-3) + ... + 3 + 2 + 1 new edge nodes added every iteration since 
         after ith iteration, i vertices have been processed with finalized min distances
 
+        edges on complete graph is v*(v-1)
+
 '''
