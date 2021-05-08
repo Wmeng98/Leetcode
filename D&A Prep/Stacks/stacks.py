@@ -24,11 +24,13 @@ class Postfix:
         for i in exp:
             # isdigit only for positive unsigned integers
             if i.isdigit():
+                # could convert to int here too
                 self.push(i)
             else:
                 # pop two elements and apply operator
                 v1 = self.pop()
                 v2 = self.pop() 
+                # string parsing here is, don't parse str for multi-digits tho
                 res = str(eval(v2 + i + v1))
                 self.push(res)
         return int(self.pop())

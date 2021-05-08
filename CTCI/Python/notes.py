@@ -112,3 +112,42 @@ operator.itemgetter
 
 
 '''
+
+'''
+Sorting
+
+    lists have built-in list.sort() method, modifies list in place
+    sorted() function builds a new sorted list from an iterable
+
+    [KEY]
+        key param to specify a function (or other callable) to be called on each list prior to 
+        making comparisons
+
+            sorted("This is a test string from Andrew".split(), key=str.lower)
+
+        value of the key parameter should be a function (or other callable) that takes a single argument and returns a key to use for sorting purposes
+        
+        LAMBDAS are a good candidate here!!!
+
+    NOTE: Common pattern is to sort complex objects using some of the objects indices as keys
+        
+            sorted(student_tuples, key=lambda student: student[2])
+            sorted(student_objects, key=lambda student: student.age)
+
+    [OPERATOR MODULE FUNCTIONS]
+        The key-function patterns shown above are very common, so Python provides convenience functions to make accessor functions easier and faster
+
+            ***** from operator import itemgetter, attrgetter *****
+
+            sorted(student_tuples, key=itemgetter(2))
+            sorted(student_objects, key=attrgetter('age'))
+
+        multiple levels of sorting. For example, to sort by grade then by age
+
+            sorted(student_tuples, key=itemgetter(1,2))
+            sorted(student_objects, key=attrgetter('grade', 'age'))
+        
+
+
+'''
+

@@ -491,6 +491,7 @@ Typical implementation is NOT STABLE but can be made stable
 
 '''
 
+# basically siftdown
 def heapify(arr, n, i):
 	# init largest as root
 	largest = i
