@@ -14,10 +14,10 @@ Best, Worst, Expected cases all describe big O (runtime) for particular inputs/s
 
 ## Space Complexity
 
-Stack space (levls of the stack) in recursive calls count for space complexity.\
+Stack space (levels of the stack) in recursive calls count for space complexity.\
 Note calls need to simultaneously exist on the call stack to take up additional space
 
-## Drop the
+## Drop the Constants
 
 - contstants
 - non-dominant terms

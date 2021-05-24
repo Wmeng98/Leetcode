@@ -98,7 +98,7 @@ def insertIterative(root, key):
 DELETE
 
 3 possibilities arise when deleting a node
-    1. Node to be deleted is the lead
+    1. Node to be deleted is the leaf
         simply remove the node
     2. Node to be deleted only has one child
         Remove node and replace it with its child
